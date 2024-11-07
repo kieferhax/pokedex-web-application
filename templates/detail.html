@@ -5,26 +5,40 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
+    <h1>#{{ '%03d'|format(pokemon.id) }} {{ pokemon.name|title }}</h1>
     <div class="container">
-        <a href="/" class="back-button">← Back</a>
-        <div class="pokemon-detail">
-            <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
-            <h1>#{{ pokemon.id }} {{ pokemon.name|title }}</h1>
-            <div class="types">
-                {% for type in pokemon.types %}
-                <span class="type {{ type }}">{{ type }}</span>
-                {% endfor %}
+        <div class="pokedex-top">
+            <div class="big-circle"></div>
+            <div class="small-circles">
+                <div class="small-circle red"></div>
+                <div class="small-circle yellow"></div>
+                <div class="small-circle green"></div>
             </div>
-            <div class="stats">
-                <h2>Stats</h2>
-                {% for stat in pokemon.stats %}
-                <div class="stat-row">
-                    <span>{{ stat.name|title }}:</span>
-                    <div class="stat-bar" style="width: '{{ stat.base_stat }}%'">
-                        {{ stat.base_stat }}
-                    </div>
+        </div>
+        <div class="screen">
+            <a href="/" class="back-button">← Back</a>
+            <div class="pokemon-detail">
+                <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
+                <h1>#{{ '%03d'|format(pokemon.id) }} {{ pokemon.name|title }}</h1>
+                <div class="types">
+                    {% for type in pokemon.types %}
+                    <span class="type {{ type|lower }}">{{ type|title }}</span>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <div class="stats">
+                    <h2>Base Stats</h2>
+                    {% for stat in pokemon.stats %}
+                    <div class="stat-row">
+                        <span class="stat-name">{{ stat.name|replace('-', ' ')|title }}:</span>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar" style="width: calc({{ (stat.base_stat / 255 * 100)|int }}%)">
+                                <span class="stat-value">{{ stat.base_stat|default(0) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

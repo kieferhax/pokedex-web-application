@@ -6,17 +6,26 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pokedex</h1>
-        <input type="text" id="search" placeholder="Search Pokemon...">
-        <div class="pokemon-grid">
-            {% for p in pokemon %}
-            <div class="pokemon-card">
-                <a href="/pokemon/{{ p.id }}">
-                    <img src="{{ p.sprites.front_default }}" alt="{{ p.name }}">
-                    <h3>#{{ p.id }} {{ p.name|title }}</h3>
-                </a>
+        <div class="pokedex-top">
+            <div class="big-circle"></div>
+            <div class="small-circles">
+                <div class="small-circle red"></div>
+                <div class="small-circle yellow"></div>
+                <div class="small-circle green"></div>
             </div>
-            {% endfor %}
+        </div>
+        <div class="screen">
+            <input type="text" id="search" placeholder="Search Pokemon...">
+            <div class="pokemon-grid">
+                {% for p in pokemon %}
+                <div class="pokemon-card">
+                    <a href="/pokemon/{{ p.id }}">
+                        <img src="{{ p.sprites.front_default }}" alt="{{ p.name }}">
+                        <h3>#{{ '%03d' % p.id }} {{ p.name|title }}</h3>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
