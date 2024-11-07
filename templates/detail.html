@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ pokemon.name|title }} - Pokedex</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-button">← Back</a>
+        <div class="pokemon-detail">
+            <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
+            <h1>#{{ pokemon.id }} {{ pokemon.name|title }}</h1>
+            <div class="types">
+                {% for type in pokemon.types %}
+                <span class="type {{ type }}">{{ type }}</span>
+                {% endfor %}
+            </div>
+            <div class="stats">
+                <h2>Stats</h2>
+                {% for stat in pokemon.stats %}
+                <div class="stat-row">
+                    <span>{{ stat.name|title }}:</span>
+                    <div class="stat-bar" style="width: '{{ stat.base_stat }}%'">
+                        {{ stat.base_stat }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
