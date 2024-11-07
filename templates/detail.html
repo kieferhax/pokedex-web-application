@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
-    <h1>#{{ '%03d'|format(pokemon.id) }} {{ pokemon.name|title }}</h1>
     <div class="container">
         <div class="pokedex-top">
             <div class="big-circle"></div>
