@@ -1,6 +1,6 @@
 # Pokedex Web Application
 
-![Pokedex Logo]()
+![Pokedex Logo](https://github.com/kieferhax/pokedex-web-application/blob/main/pokedex-logo.png)
 
 Welcome to the **Pokedex Web Application**! This project is a web-based Pokedex designed to provide detailed information about various Pokémon.
 
