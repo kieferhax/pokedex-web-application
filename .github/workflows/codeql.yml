@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        language: [ 'python', 'javascript', ]
+        language: [ 'python', 'javascript' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'typescript', 'python', 'ruby' ]
         # See https://docs.github.com/en/code-security/code-scanning/using-codeql-code-scanning/supported-languages-and-frameworks
 
