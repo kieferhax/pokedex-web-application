@@ -1,14 +1,24 @@
 :root {
-    --pokedex-red: #dc0a2d;
-    --screen-bg: #98cb98;
-    --screen-border: #dedede;
+  --pokedex-red: #dc0a2d;
+  --pokedex-dark: #ab1232;
+  --screen-bg: #98cb98;
+  --screen-border: #dedede;
+  --text-primary: #2d2d2d;
+  --text-secondary: #666666;
+  --type-normal: #A8A878;
+  --type-fire: #F08030;
+  --type-water: #6890F0;
+  --animation-speed: 0.3s;
 }
 
 body {
-    background-color: #f5f5f5;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-primary);
+}
+
+h1, h2, h3 {
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 1px;
 }
 
 .container {
