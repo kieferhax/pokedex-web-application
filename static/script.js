@@ -1,4 +1,3 @@
-// Add image error handling
 function handleImageError(img) {
     img.onerror = null;
     img.src = '/static/missing-pokemon.png';
