@@ -47,6 +47,8 @@ h1, h2, h3 {
 .pokedex-logo img {
     max-width: 200px;
     filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+    display: block; /* Ensure the image is displayed as a block element */
+    margin: 0 auto; /* Center the image horizontally */
 }
 
 .big-circle {
@@ -160,15 +162,21 @@ h1, h2, h3 {
 }
 
 .pokemon-card img {
-    width: 96px;
-    height: 96px;
+    width: 128px; /* Increased size */
+    height: 128px; /* Increased size */
     image-rendering: pixelated;
 }
 
 .pokemon-card h3 {
     margin: 10px 0;
     color: #333;
-    font-size: 1em;
+    font-size: 0.8em; /* Further reduced font size */
+    white-space: normal; /* Allow text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    display: -webkit-box; /* Display as a box for truncation */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical; /* Vertical orientation */
 }
 
 /* Detail page styles */
@@ -303,8 +311,8 @@ h1, h2, h3 {
 
 /* Add new styles and fix conflicts */
 .pokemon-detail img {
-  width: 192px;
-  height: 192px;
+  width: 256px; /* Increased size */
+  height: 256px; /* Increased size */
   image-rendering: pixelated;
   margin: 20px 0;
 }
