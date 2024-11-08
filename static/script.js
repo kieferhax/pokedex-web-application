@@ -31,3 +31,13 @@ document.querySelector('.pokemon-grid').addEventListener('mouseover', (e) => {
         // You can add a subtle hover sound here if desired
     }
 });
+
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    document.body.dataset.theme = 
+        document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', document.body.dataset.theme);
+});
+
+// Load saved theme
+document.body.dataset.theme = localStorage.getItem('theme') || 'light';

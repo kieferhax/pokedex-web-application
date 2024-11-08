@@ -280,3 +280,23 @@ h1, h2, h3 {
       max-width: 150px;
   }
 }
+
+[data-theme="dark"] {
+  --screen-bg: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --screen-border: #444444;
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--pokedex-red);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
