@@ -223,3 +223,32 @@ h1, h2, h3 {
     0%, 100% { opacity: 0.8; }
     50% { opacity: 1; }
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+
+.pokemon-card {
+  animation: fadeIn var(--animation-speed) ease-in-out,
+             slideIn var(--animation-speed) ease-out;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--screen-border);
+  border-top: 4px solid var(--pokedex-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
