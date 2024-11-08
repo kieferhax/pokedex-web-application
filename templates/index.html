@@ -6,8 +6,13 @@
 </head>
 <body>
     <div class="container">
+        <div class="pokedex-logo">
+            <img src="{{ url_for('static', filename='pokedex-logo.png') }}" alt="Pokedex">
+        </div>
         <div class="pokedex-top">
-            <div class="big-circle"></div>
+            <div class="big-circle">
+                <div class="circle-light"></div>
+            </div>
             <div class="small-circles">
                 <div class="small-circle red"></div>
                 <div class="small-circle yellow"></div>
