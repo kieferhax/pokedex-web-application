@@ -1,8 +1,13 @@
+// Add image error handling
+function handleImageError(img) {
+    img.onerror = null;
+    img.src = '/static/missing-pokemon.png';
+}
+
 document.getElementById('search').addEventListener('input', async (e) => {
     const query = e.target.value;
     const grid = document.querySelector('.pokemon-grid');
     
-    // Add loading state
     grid.classList.add('loading');
     
     try {
@@ -12,7 +17,9 @@ document.getElementById('search').addEventListener('input', async (e) => {
         grid.innerHTML = pokemon.map(p => `
             <div class="pokemon-card">
                 <a href="/pokemon/${p.id}">
-                    <img src="${p.sprites.front_default}" alt="${p.name}">
+                    <img src="${p.sprites.front_default}" 
+                         alt="${p.name}" 
+                         onerror="handleImageError(this)">
                     <h3>#${String(p.id).padStart(3, '0')} ${p.name.charAt(0).toUpperCase() + p.name.slice(1)}</h3>
                 </a>
             </div>
@@ -32,12 +39,17 @@ document.querySelector('.pokemon-grid').addEventListener('mouseover', (e) => {
     }
 });
 
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.dataset.theme = 
-        document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', document.body.dataset.theme);
+// Improve theme toggle
+function setTheme(theme) {
+    document.body.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    document.querySelector('.theme-icon').textContent = theme === 'dark' ? '🌞' : '🌓';
+}
+
+document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const newTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
 });
 
-// Load saved theme
-document.body.dataset.theme = localStorage.getItem('theme') || 'light';
+// Initialize theme
+setTheme(localStorage.getItem('theme') || 'light');

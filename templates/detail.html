@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pokemon.name|title }} - Pokedex</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <div class="pokedex-logo">
+            <img src="{{ url_for('static', filename='pokedex-logo.png') }}" alt="Pokedex">
+        </div>
         <div class="pokedex-top">
             <div class="big-circle"></div>
             <div class="small-circles">
@@ -42,6 +47,8 @@
         </div>
     </div>
     <button id="theme-toggle" class="theme-toggle">
-    <span class="theme-icon">🌓</span>
+        <span class="theme-icon">🌓</span>
+    </button>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
