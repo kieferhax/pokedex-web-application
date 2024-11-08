@@ -252,3 +252,31 @@ h1, h2, h3 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.container {
+  max-width: 1200px;
+  width: 95%;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .pokemon-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .container {
+      padding: 10px;
+  }
+  
+  .pokedex-logo img {
+      max-width: 150px;
+  }
+}
