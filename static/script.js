@@ -11,6 +11,14 @@ function debounce(func, wait) {
     };
 }
 
+let currentLanguage = localStorage.getItem('language') || 'en';
+
+function setLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('language', lang);
+    window.location.reload();
+}
+
 document.getElementById('search').addEventListener('input', debounce(async (e) => {
     const query = e.target.value;
     const grid = document.querySelector('.pokemon-grid');
@@ -18,16 +26,16 @@ document.getElementById('search').addEventListener('input', debounce(async (e) =
     grid.classList.add('loading');
     
     try {
-        const response = await fetch(`/api/search?q=${query}`);
+        const response = await fetch(`/api/search?q=${query}&lang=${currentLanguage}`);
         const pokemon = await response.json();
         
         grid.innerHTML = pokemon.map(p => `
             <div class="pokemon-card">
-                <a href="/pokemon/${p.id}">
+                <a href="/pokemon/${p.id}?lang=${currentLanguage}">
                     <img src="${p.sprites.front_default}" 
                          alt="${p.name}" 
                          onerror="handleImageError(this)">
-                    <h3>#${String(p.id).padStart(3, '0')} ${p.name.charAt(0).toUpperCase() + p.name.slice(1)}</h3>
+                    <h3>#${String(p.id).padStart(3, '0')} ${p.name}</h3>
                 </a>
             </div>
         `).join('');
@@ -54,6 +62,11 @@ document.getElementById('theme-toggle')?.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
+});
+
+document.getElementById('language-toggle')?.addEventListener('click', () => {
+    const newLang = currentLanguage === 'en' ? 'ja' : 'en';
+    setLanguage(newLang);
 });
 
 setTheme(localStorage.getItem('theme') || 'light');

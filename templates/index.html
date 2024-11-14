@@ -39,6 +39,9 @@
     <button id="theme-toggle" class="theme-toggle">
         <span class="theme-icon">🌓</span>
     </button>
+    <button id="language-toggle" class="language-toggle">
+        <span class="lang-icon">{{ 'EN' if lang == 'ja' else '日本語' }}</span>
+    </button>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

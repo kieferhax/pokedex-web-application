@@ -308,6 +308,35 @@ html[data-theme="dark"] .type {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
+.language-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    background: var(--pokedex-red);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.type-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.pokemon-bio {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-align: left;
+    line-height: 1.5;
+}
+
 .pokemon-detail img {
   width: 256px; 
   height: 256px;
@@ -332,6 +361,14 @@ html[data-theme="dark"] .type {
 .stat-value {
   color: white;
   padding: 0 5px;
+}
+
+.stat-bar {
+    background: linear-gradient(to right, #4CAF50, #45a049);
+    height: 20px;
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+    max-width: 100%;
 }
 
 .loading {

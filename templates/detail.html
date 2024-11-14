@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +27,16 @@
                 <h1>#{{ '%03d'|format(pokemon.id) }} {{ pokemon.name|title }}</h1>
                 <div class="types">
                     {% for type in pokemon.types %}
-                    <span class="type {{ type|lower }}">{{ type|title }}</span>
+                    <span class="type {{ type|lower }}">
+                        <img src="{{ url_for('static', filename='type-icons/' + type|lower + '.png') }}" 
+                             alt="{{ type }}" class="type-icon">
+                        {{ type|title }}
+                    </span>
                     {% endfor %}
+                </div>
+                <div class="pokemon-bio">
+                    <h2>Pokédex Entry</h2>
+                    <p>{{ pokemon.species_text }}</p>
                 </div>
                 <div class="stats">
                     <h2>Base Stats</h2>
@@ -36,8 +44,8 @@
                     <div class="stat-row">
                         <span class="stat-name">{{ stat.name|replace('-', ' ')|title }}:</span>
                         <div class="stat-bar-container">
-                            <div class="stat-bar" style="width: calc({{ (stat.base_stat / 255 * 100)|int }}%)">
-                                <span class="stat-value">{{ stat.base_stat|default(0) }}</span>
+                            <div class="stat-bar" style="width: '{{ min(stat.base_stat, 100) }}%'">
+                                <span class="stat-value">{{ stat.base_stat }}</span>
                             </div>
                         </div>
                     </div>
@@ -48,6 +56,9 @@
     </div>
     <button id="theme-toggle" class="theme-toggle">
         <span class="theme-icon">🌓</span>
+    </button>
+    <button id="language-toggle" class="language-toggle">
+        <span class="lang-icon">{{ 'EN' if lang == 'ja' else '日本語' }}</span>
     </button>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
