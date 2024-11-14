@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ pokemon.name|title }} - Pokedex</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
 </head>
 <body>
     <div class="container">
-        <div class="pokedex-logo">
-            <img src="{{ url_for('static', filename='pokedex-logo.png') }}" alt="Pokedex" onerror="this.onerror=null; this.src='{{ url_for('static', filename='missing-logo.png') }}';">
-        </div>
         <div class="pokedex-top">
             <div class="big-circle"></div>
             <div class="small-circles">
@@ -23,7 +23,7 @@
         <div class="screen">
             <a href="/" class="back-button">← Back</a>
             <div class="pokemon-detail">
-                <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
+                <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name|title }}" loading="lazy">
                 <h1>#{{ '%03d'|format(pokemon.id) }} {{ pokemon.name|title }}</h1>
                 <div class="types">
                     {% for type in pokemon.types %}

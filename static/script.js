@@ -3,7 +3,15 @@ function handleImageError(img) {
     img.src = '/static/missing-pokemon.png';
 }
 
-document.getElementById('search').addEventListener('input', async (e) => {
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+document.getElementById('search').addEventListener('input', debounce(async (e) => {
     const query = e.target.value;
     const grid = document.querySelector('.pokemon-grid');
     
@@ -29,26 +37,23 @@ document.getElementById('search').addEventListener('input', async (e) => {
     } finally {
         grid.classList.remove('loading');
     }
-});
+}, 300));
 
-// Add hover sound effect for cards
 document.querySelector('.pokemon-grid').addEventListener('mouseover', (e) => {
     if (e.target.closest('.pokemon-card')) {
-        // You can add a subtle hover sound here if desired
     }
 });
 
-// Improve theme toggle
 function setTheme(theme) {
-    document.body.dataset.theme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     document.querySelector('.theme-icon').textContent = theme === 'dark' ? '🌞' : '🌓';
 }
 
 document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    const newTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
 });
 
-// Initialize theme
 setTheme(localStorage.getItem('theme') || 'light');
