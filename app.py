@@ -147,7 +147,7 @@ def pokemon_detail(pokemon_id):
         return "Pokemon not found", 404
     except Exception as e:
         app.logger.error(f"Error in pokemon_detail: {str(e)}")
-        return f"An error occurred: {str(e)}", 500
+        return "An internal error has occurred!", 500
 
 @app.route('/api/search')
 def search_pokemon():
