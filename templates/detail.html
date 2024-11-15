@@ -44,7 +44,7 @@
                     <div class="stat-row">
                         <span class="stat-name">{{ stat.name|replace('-', ' ')|title }}:</span>
                         <div class="stat-bar-container">
-                            <div class="stat-bar" style="width: '{{ min(stat.base_stat, 100) }}%'">
+                            <div class="stat-bar" style="width: {{ (stat.base_stat / 255 * 100)|round }}%">
                                 <span class="stat-value">{{ stat.base_stat }}</span>
                             </div>
                         </div>
