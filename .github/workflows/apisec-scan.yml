@@ -17,7 +17,11 @@ jobs:
 
     - name: Install APISec CLI
       run: |
-        curl -fsSL https://cli.apisec.ai/install.sh | sh
+        curl -k -fsSL https://cli.apisec.ai/install.sh | sh
+
+    - name: Verify APISec CLI installation
+      run: |
+        apisec --version
 
     - name: Run APISec scan
       env:
