@@ -15,9 +15,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Install APISec CLI
+      run: |
+        curl -fsSL https://cli.apisec.ai/install.sh | sh
+
     - name: Run APISec scan
       env:
         APISEC_API_KEY: ${{ secrets.APISEC_API_KEY }}
       run: |
-        curl -fsSL https://cli.apisec.ai/install.sh | sh
         apisec scan run --token ${{ secrets.APISEC_API_KEY }} --project pokedex-web-application
