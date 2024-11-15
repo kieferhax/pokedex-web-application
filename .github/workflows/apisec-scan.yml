@@ -12,12 +12,12 @@ jobs:
   apisec-scan:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
     - name: Install APISec CLI
       run: |
         curl -k -fsSL https://cli.apisec.ai/install.sh | sh
+    
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Verify APISec CLI installation
       run: |
