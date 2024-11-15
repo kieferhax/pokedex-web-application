@@ -1,3 +1,5 @@
+import he from 'he';
+
 function handleImageError(img) {
     img.onerror = null;
     img.src = '/static/missing-pokemon.png';
@@ -40,7 +42,7 @@ document.getElementById('search').addEventListener('input', debounce(async (e) =
         
         grid.innerHTML = pokemon.map(p => `
             <div class="pokemon-card">
-                <a href="/pokemon/${p.id}?lang=${currentLanguage}">
+                <a href="/pokemon/${p.id}?lang=${he.encode(currentLanguage)}">
                     <img src="${p.sprites.front_default}" 
                          alt="${p.name}" 
                          onerror="handleImageError(this)">
