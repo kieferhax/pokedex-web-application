@@ -77,7 +77,7 @@ async function loadMorePokemon() {
             if (pokemon.length > 0) {
                 const newCards = pokemon.map(p => `
                     <div class="pokemon-card">
-                        <a href="/pokemon/${p.id}?lang=${currentLanguage}">
+                        <a href="/pokemon/${p.id}?lang=${he.encode(currentLanguage)}">
                             <img src="${p.sprites.front_default}" 
                                  alt="${p.name}" 
                                  onerror="handleImageError(this)">
